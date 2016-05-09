@@ -1,0 +1,40 @@
+Nombre: Elena María Toro Pérez
+DNI: 20225985-S
+
+Informática Gráfica - 4º Doble Grado en Ingeniería Informática y Matemáticas
+Práctica 2
+
+- El sistema operativo usado para compilar ha sido Ubuntu y el entorno de desarollo ha sido el editor de texto Geany.
+
+TECLAS NUEVAS QUE HE AÑADIDO:
+- Si pulsamos las teclas "o" ó "O" vamos cambiando la figura en este orden: 1º beethoven, 2º ant, 3º big_dodge, 4º peón y 5º extensión.
+- Si pulsamos las teclas "p" ó "P" vamos cambiando de práctica en este orden: 1º práctica 2 y 2º práctica 1.
+- Si pulsamos las teclas "m" ó "M" vamos cambiando el modo de visualización de la figura en el siguiente orden:
+	1º figura representada por puntos.
+	2º figura representada por líneas.
+	3º figura representada por un polígono relleno de color negro.
+	4º figura representada por un polígono relleno con cada cara de un color (verde o negro).
+
+- He implementado un prisma cuadrangular como extensión.
+	El código está en MallaTraslacion.hpp y MallaTraslacion.cpp.
+
+	Tiene como parámetros configurables:
+		* el nombre de un archivo ply, en el cual se almacenan las coordenadas de los vértices de un contorno cerrado.
+			En mi ejemplo, el archivo ply almacena las coordenadas de 4 vértices, para así poder crear el prisma.
+		* el número de traslaciones, que son las veces que le sumaremos un vector a los vértices pasados por ply.
+		* el vector de traslación, que nos dará la orientación para ir creando los nuevos puntos en el espacio.
+
+	En primer lugar, leo las coordenadas de los vértices del archivo ply (pasado como argumento) con el constructor
+	ply::read_vertices( nombre_arch, vertices_ply ) y las almaceno en mi vector de vértices.
+	Una vez tengo almacenados los 4 vértices de la base de la figura, creo un bucle anidado para que en cada traslación,
+	se genere la siguiente polilinea de 4 vértices, es decir, en cada iteración voy a sumarle a cada vértice al vector de traslación,
+	para así generar el siguiente vértice encima de él.
+
+	Una vez tengo todos los vértices de la figura almacenados en mi vector de vértices, creo las caras con otro bucle anidado que
+	irá uniendo los vértices de 3 en 3. Es decir, creará la primera cara uniendo el vértice en el que estamos en la iteración i+j del bucle,
+	con el adyacente a él y el de encima de dicho adyacente y creará la segunda cara con el vértice en el que estamos en la iteración i+j
+	del bucle, con el diagonal (el de encima del adyacente) y con el de encima de dicha iteración i+j.
+
+	Usaré, finalmente, dentro del bucle anidado, un bucle if para ir controlando que el último vértice de cada polilinea se una con
+	el primero (el de al lado). Es decir, este bucle if hará la función de % (módulo), renombrando el vértice adyacente y el diagonal
+	para que se unan correctamente los vértices al formar las caras. 

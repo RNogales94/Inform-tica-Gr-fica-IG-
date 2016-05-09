@@ -1,0 +1,20 @@
+
+
+Sistema Operativo: Mac OSX 10.11 (El capitan)
+
+Teclas: 
+	F:	  Cambiar de figura
+	M: 	  Cambiar de modo
+	Flechas:  Mover la cámara
+	+:        Zoom +
+	-:	  Zoom -
+
+
+Notas:
+# He modificado el main para añadir tres bolitas en los ejes para mejorar la orientación.
+# He añadido nuevos PATH al include.make para adaptarlo a mi SO
+Concretamente:
+
+lib_jpg         := -L/usr/local/lib -ljpeg
+
+c_flags  := -I/usr/local/Cellar/jpeg/8d/include -I$(include_dir) -I$(extra_inc_dir) $(os_flag) $(opt_dbg_flag) $(exit_first) $(warn_all)

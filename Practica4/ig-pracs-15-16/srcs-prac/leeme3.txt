@@ -1,0 +1,17 @@
+Nombre: Elena María Toro Pérez
+DNI: 20225985-S
+
+Informática Gráfica - 4º Doble Grado en Ingeniería Informática y Matemáticas
+Práctica 3
+
+- El sistema operativo usado para compilar ha sido Ubuntu y el entorno de desarollo ha sido el editor de texto Geany.
+
+
+TECLAS NUEVAS QUE HE AÑADIDO:
+- Si pulsamos las teclas "G" ó "g" cambiamos el grado de libertad activo en este orden: 1º girar cabina, 2º subir/bajar cabina y 3º girar 		atracción.
+- Si pulsamos la tecla ">" aumentamos el valor del grado de libertad actual.
+- Si pulsamos la tecla "<" aumentamos el valor del grado de libertad actual.
+
+
+
+No he implementado la funcionalidad descrita en las extensiones.

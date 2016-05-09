@@ -1,0 +1,55 @@
+Nombre: Elena María Toro Pérez
+DNI: 20225985-S
+
+Informática Gráfica - 4º Doble Grado en Ingeniería Informática y Matemáticas
+
+- El sistema operativo usado para compilar ha sido Ubuntu y el entorno de desarollo ha sido el editor de texto Geany.
+
+TECLAS NUEVAS QUE HE AÑADIDO:
+- Si pulsamos la tecla "c" vamos cambiando la figura en este orden: 1º cubo, 2º tetraedro, 3º cono y 4º cilindro.
+- Si pulsamos el número "0" vamos a ver la figura representada por puntos.
+- Si pulsamos el número "1" vamos a ver la figura representada por líneas.
+- Si pulsamos el número "2" vamos a ver la figura representada por un polígono relleno de color negro.
+- Si pulsamos el número "3" vamos a ver la figura representada por un polígono relleno con cada cara de un color (verde o negro).
+
+- He implementado el cono y el cilindro como extensión.
+	* CONO: tiene como parámetro configurable el número de caras y el código está en Cono.cpp y Cono.hpp.
+
+		El cono va a ser en realidad una pirámide que va a degenerar en un cono si ponemos un número de caras suficientemente grande.
+
+		En el número de caras pasado como parámetro voy a incluir la base, es decir:
+			num_caras = número de caras laterales + base
+
+		Para crear el cono con dicho número de caras, en primer lugar he introducido los vértices del mismo basándome en lo siguiente:
+			Como la base es una circunferencia, su longitud va a ser L = PI * 2r.
+	  			- Voy a considerar la circunferencia unidad => el radio r tendrá valor 1.
+	 	 	Por tanto, la longitud de la circunferencia va a ser L = PI*2.
+	  
+	 	 	Para hallar las coordenadas de cada vértice en la circunferencia, voy a usar la siguiente relación:
+	 	 		como una circunferencia tiene 360º, voy a dividirla entre el número de caras laterales que quiero poner
+				(menos 1 ya que también considero la base como una cara) y voy rotando de un vértice al siguiente (para ello,
+				pongo *i para rotar al siguiente en cada iteración).
+	  
+	 	 	En la base, ningún punto tendrá altura => la segunda coordenada es 0.
+			Las coordenadas x de los vértices serán: cos((2*PI/(num_caras-1))*i)
+			Las coordenadas y de los vértices serán: sin((2*PI/(num_caras-1))*i) por dicha relación con la circunferencia
+
+		Una vez hecha la circunferencia con dichos vértices, añadimos el vértice del centro de la base y el vértice de la cúspide.
+
+		Para unir los vértices y crear las caras he usado dos bucles for:
+			- El primero creará las caras de la base uniendo un vértice, el siguiente a él y el del centro de la base.
+			- El segundo bucle creará las caras laterales uniendo un vértice, el siguiente a él y el de la cúspide.
+		Uso % del tope del bucle para que el último vértice se una con el primero.
+
+	* CILINDRO: tiene como parámetro configurable el número de caras y el código está en Cilindro.cpp y Cilindro.hpp.
+		
+		Para el cilindro, he usado exactamente la misma idea que para el cono.
+		En primer lugar, he creado los vértices de la base inferior (igual que los del cono), los de la base superior
+		(iguales que los de la base inferior pero con altura 1) y he añadido el vértice del centro de la base superior y de la inferior.
+
+		Para unir los vértices y crear las caras he usado 3 bucles for:
+			- El primero crea las caras de la base inferior uniendo un vértice, el siguiente a él y el del centro de la base inferior.
+			- El segundo crea las caras de la base superior uniendo un vértice, el siguiente a él y el del centro de la base superior.
+			- El tercero crea las caras laterales uniendo un vértice, el siguiente a él y el de encima (o debajo) de este.
+
+
